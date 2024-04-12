@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Development To-Do List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+        }
+        .todo-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .todo-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+        .todo-item:last-child {
+            border-bottom: none;
+        }
+        .todo-item input[type="checkbox"] {
+            margin-right: 10px;
+        }
+        .todo-item label {
+            flex-grow: 1;
+            margin: 0;
+        }
+        .add-task {
+            display: flex;
+        }
+        .add-task input[type="text"] {
+            flex-grow: 1;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+        .add-task button {
+            padding: 8px 20px;
+            border: none;
+            border-radius: 4px;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+        .add-task button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Web Development To-Do List</h1>
+    <ul class="todo-list">
+        <li class="todo-item">
+            <input type="checkbox" id="task1">
+            <label for="task1">Design wireframes for homepage</label>
+        </li>
+        <li class="todo-item">
+            <input type="checkbox" id="task2">
+            <label for="task2">Write HTML structure for landing page</label>
+        </li>
+        <li class="todo-item">
+            <input type="checkbox" id="task3">
+            <label for="task3">Style landing page with CSS</label>
+        </li>
+        <!-- Add more tasks here -->
+    </ul>
+    <div class="add-task">
+        <input type="text" id="newTask" placeholder="Add a new task...">
+        <button id="addTaskBtn">Add Task</button>
+    </div>
+</div>
+
+<script>
+    document.getElementById("addTaskBtn").addEventListener("click", function() {
+        var input = document.getElementById("newTask").value;
+        if (input !== "") {
+            var newItem = document.createElement("li");
+            newItem.className = "todo-item";
+            newItem.innerHTML = `
+                <input type="checkbox">
+                <label>${input}</label>
+            `;
+            document.querySelector(".todo-list").appendChild(newItem);
+            document.getElementById("newTask").value = "";
+        }
+    });
+</script>
+
+</body>
+</html>
